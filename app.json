@@ -1,0 +1,33 @@
+{
+    "name": "media delete",
+    "description": "this bot will delete video files from your group and forward it to your channel, made with pyrogram",
+    "repository": "https://github.com/paavampayyan/Media-Delete-Bot",
+    "keywords": [
+        "python",
+        "pyrogram"
+    ],
+    "image": "heroku/python",
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "env": {
+        "API_ID": {
+            "description": "App api_id from https://my.telegram.org"
+        },
+        "API_HASH": {
+            "description": "App api_hash from https://my.telegram.org"
+        },
+        "BOT_TOKEN": {
+            "description": "Bot token from https://t.me/BotFather"
+        },
+        "S_CHANNEL_ID": {
+            "description": "channel id ex: -10045368764 "
+        },
+        "TGP_USERNAME": {
+            "description": "group username. ex: @abcd"
+        }
+    }
+}
