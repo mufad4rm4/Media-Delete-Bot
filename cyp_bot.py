@@ -59,7 +59,7 @@ def video_filter(client, message):
     return
 
 @cyp.on_message(filters.photo & filters.chat(t_group))
-def video_filter(client, message):
+def pic_filter(client, message):
     chat_id = message.chat.id
     user_id = message.from_user.id
     user_name = message.from_user.first_name
@@ -74,7 +74,7 @@ def video_filter(client, message):
 
     return
 @cyp.on_message(filters.document & filters.chat(t_group))
-def video_filter(client, message):
+def doc_filter(client, message):
     chat_id = message.chat.id
     user_id = message.from_user.id
     user_name = message.from_user.first_name
