@@ -52,7 +52,7 @@ def video_filter(client, message):
     mention = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
     video_id = message.message_id
     #============================ main()
-    message.copy(s_channel, caption= "@neela_kkuyil")
+    message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
     cyp.send_chat_action(chat_id=t_group, action= "typing")
     cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
