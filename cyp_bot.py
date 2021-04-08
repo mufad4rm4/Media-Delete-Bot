@@ -23,7 +23,7 @@ cyp = Client(
 print("bot starting")
 
 
-@cyp.on_message(filters.command(['start']))
+@cyp.on_message(filters.command(['start']) & filters.private)
 def start(client, message):
     message.reply_photo(start_img, caption= "💣 അധോലോകം💣",
                      reply_markup=InlineKeyboardMarkup(
