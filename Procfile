@@ -1,1 +1,1 @@
-worker: python3 cyp_mainbot.py
+worker: python3 cyp_bot.py
