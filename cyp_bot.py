@@ -22,7 +22,6 @@ cyp = Client(
 )
 print("bot starting")
 
-
 @cyp.on_message(filters.command(['start']) & filters.private)
 def start(client, message):
     message.reply_photo(start_img, caption= "💣 അധോലോകം💣",
@@ -56,6 +55,37 @@ def video_filter(client, message):
     cyp.send_chat_action(chat_id=t_group, action= "typing")
     cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     cyp.send_message(chat_id=t_group, text=f"{mention} you're video successfully added to our channel.")
+
+    return
+
+@cyp.on_message(filters.photo & filters.chat(t_group))
+def video_filter(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+    mention = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
+    video_id = message.message_id
+    #============================ main()
+    message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
+    #============================ done()
+    cyp.send_chat_action(chat_id=t_group, action= "typing")
+    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+    cyp.send_message(chat_id=t_group, text=f"{mention} you're image successfully added to our channel.")
+
+    return
+@cyp.on_message(filters.document & filters.chat(t_group))
+def video_filter(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+    mention = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
+    video_id = message.message_id
+    #============================ main()
+    message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
+    #============================ done()
+    cyp.send_chat_action(chat_id=t_group, action= "typing")
+    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+    cyp.send_message(chat_id=t_group, text=f"{mention} you're file successfully added to our channel.")
 
     return
 
