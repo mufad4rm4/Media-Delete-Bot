@@ -22,7 +22,6 @@ cyp = Client(
 )
 print("bot starting")
 
-s_channel = "1445436774"
 
 @cyp.on_message(filters.command(['start']))
 def start(client, message):
