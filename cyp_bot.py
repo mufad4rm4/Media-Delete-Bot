@@ -52,7 +52,6 @@ def video_filter(client, message):
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-    cyp.send_chat_action(chat_id=t_group, action= "typing")
     cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     cyp.send_message(chat_id=t_group, text=f"{mention} you're video successfully added to our channel.")
 
@@ -68,7 +67,6 @@ def pic_filter(client, message):
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-    cyp.send_chat_action(chat_id=t_group, action= "typing")
     cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     cyp.send_message(chat_id=t_group, text=f"{mention} you're image successfully added to our channel.")
 
@@ -83,7 +81,6 @@ def doc_filter(client, message):
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-    cyp.send_chat_action(chat_id=t_group, action= "typing")
     cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     cyp.send_message(chat_id=t_group, text=f"{mention} you're file successfully added to our channel.")
 
