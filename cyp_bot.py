@@ -45,45 +45,44 @@ def start(client, message):
 @cyp.on_message(filters.video & filters.chat(t_group))
 def video_filter(client, message):
     chat_id = message.chat.id
-    user_id = message.from_user.id
-    user_name = message.from_user.first_name
-    mention = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
     video_id = message.message_id
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
-    cyp.send_message(chat_id=t_group, text=f"{mention} you're video successfully added to our channel.")
 
+    rp = message.reply_text("I will delete this video in 1 minute. If anyone wants this video, forward it to your saved messages.")
+    time.sleep(3)
+    rp.delete
+    time.sleep(57)
+    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     return
 
 @cyp.on_message(filters.photo & filters.chat(t_group))
 def pic_filter(client, message):
     chat_id = message.chat.id
-    user_id = message.from_user.id
-    user_name = message.from_user.first_name
-    mention = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
-    video_id = message.message_id
+    pic_id = message.message_id
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
-    cyp.send_message(chat_id=t_group, text=f"{mention} you're image successfully added to our channel.")
-
+    rp = message.reply_text("I will delete this image in 1 minute. If anyone wants this video, forward it to your saved messages.")
+    time.sleep(3)
+    rp.delete
+    time.sleep(57)
+    cyp.delete_messages(chat_id=chat_id, message_ids=pic_id)
     return
+
 @cyp.on_message(filters.document & filters.chat(t_group))
 def doc_filter(client, message):
     chat_id = message.chat.id
-    user_id = message.from_user.id
-    user_name = message.from_user.first_name
-    mention = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
-    video_id = message.message_id
+    doc_id = message.message_id
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
-    cyp.send_message(chat_id=t_group, text=f"{mention} you're file successfully added to our channel.")
-
+    rp = message.reply_text("I will delete this file in 1 minute. If anyone wants this video, forward it to your saved messages.")
+    time.sleep(3)
+    rp.delete
+    time.sleep(57)
+    cyp.delete_messages(chat_id=chat_id, message_ids=doc_id)
     return
 
 cyp.run()
