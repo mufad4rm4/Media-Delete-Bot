@@ -49,11 +49,7 @@ def video_filter(client, message):
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-
-    rp = message.reply_text("I will delete this video in 1 minute. If anyone wants this video, forward it to your saved messages.")
-    time.sleep(3)
-    rp.delete
-    time.sleep(57)
+    time.sleep(30)
     cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     return
 
@@ -64,10 +60,7 @@ def pic_filter(client, message):
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-    rp = message.reply_text("I will delete this image in 1 minute. If anyone wants this video, forward it to your saved messages.")
-    time.sleep(3)
-    rp.delete
-    time.sleep(57)
+    time.sleep(30)
     cyp.delete_messages(chat_id=chat_id, message_ids=pic_id)
     return
 
@@ -78,10 +71,7 @@ def doc_filter(client, message):
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     #============================ done()
-    rp = message.reply_text("I will delete this file in 1 minute. If anyone wants this video, forward it to your saved messages.")
-    time.sleep(3)
-    rp.delete
-    time.sleep(57)
+    time.sleep(30)
     cyp.delete_messages(chat_id=chat_id, message_ids=doc_id)
     return
 
