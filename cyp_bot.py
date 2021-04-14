@@ -54,7 +54,7 @@ def video_filter(client, message):
     first = message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
     second = message.copy(chat_id=sc_channel, caption= "@neela_kkuyil")
     #============================ done()
-    time.sleep(30)
+    time.sleep(15)
     cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     time.sleep(3570)
     first.delete()
