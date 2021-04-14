@@ -10,7 +10,7 @@ api_id = int(os.environ["API_ID"])
 api_hash = os.environ["API_HASH"]
 bot_token = os.environ["BOT_TOKEN"]
 s_channel = os.environ["S_CHANNEL_ID"]
-t_group = os.environ["TGP_USERNAME"]
+t_group = int(os.environ["TGP_USERNAME"])
 
 start_img = "https://telegra.ph/file/bf15b6794e857518655d9.jpg"
 
