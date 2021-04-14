@@ -4,15 +4,19 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import time
+import random
 import os
 
 api_id = int(os.environ["API_ID"])
 api_hash = os.environ["API_HASH"]
 bot_token = os.environ["BOT_TOKEN"]
 s_channel = os.environ["S_CHANNEL_ID"]
-t_group = int(os.environ["TGP_USERNAME"])
+sc_channel = int(os.environ["SEC_CHANNEL_ID"])
 
-start_img = "https://telegra.ph/file/bf15b6794e857518655d9.jpg"
+start_img = [
+    "https://telegra.ph/file/bf15b6794e857518655d9.jpg",
+    "https://telegra.ph/file/5b0406dd7b743de513c46.jpg",
+    "https://telegra.ph/file/5c91495538b0c78af8afe.jpg"]
 
 cyp = Client(
     'cyp_bot',
@@ -24,7 +28,7 @@ print("bot starting")
 
 @cyp.on_message(filters.command(['start']) & filters.private)
 def start(client, message):
-    message.reply_photo(start_img, caption= "💣 അധോലോകം💣",
+    message.reply_photo(photo=random.choice(start_img), caption= "💣 അധോലോകം💣",
                      reply_markup=InlineKeyboardMarkup(
 
                             [
@@ -42,37 +46,16 @@ def start(client, message):
     return
 
 
-@cyp.on_message(filters.video & filters.chat(t_group))
+@cyp.on_message(filters.photo | filters.video | filters.document)
 def video_filter(client, message):
     chat_id = message.chat.id
     video_id = message.message_id
     #============================ main()
     message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
+    message.copy(chat_id=sc_channel, caption= "@neela_kkuyil")
     #============================ done()
     time.sleep(30)
     cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
-    return
-
-@cyp.on_message(filters.photo & filters.chat(t_group))
-def pic_filter(client, message):
-    chat_id = message.chat.id
-    pic_id = message.message_id
-    #============================ main()
-    message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
-    #============================ done()
-    time.sleep(30)
-    cyp.delete_messages(chat_id=chat_id, message_ids=pic_id)
-    return
-
-@cyp.on_message(filters.document & filters.chat(t_group))
-def doc_filter(client, message):
-    chat_id = message.chat.id
-    doc_id = message.message_id
-    #============================ main()
-    message.copy(chat_id=s_channel, caption= "@neela_kkuyil")
-    #============================ done()
-    time.sleep(30)
-    cyp.delete_messages(chat_id=chat_id, message_ids=doc_id)
     return
 
 cyp.run()
