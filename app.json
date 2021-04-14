@@ -26,8 +26,8 @@
         "S_CHANNEL_ID": {
             "description": "channel id ex: -10045368764 "
         },
-        "TGP_USERNAME": {
-            "description": "group username. ex: @abcd"
+        "SEC_CHANNEL_ID": {
+            "description": "backup channel id ex: -10045368764"
         }
     }
 }
