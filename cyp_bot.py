@@ -83,7 +83,7 @@ def set_time(__, message):
             message.reply_text(f"Max time time 60s, You entered {time}s.")
             return
         else:
-            message.reply_text(f"Medias will be deleted after {time}s.")
+            message.reply_text(f"Group medias will be deleted after {time}s.")
             dtime.clear()
             dtime.append(time)
             admins.clear()
@@ -109,7 +109,7 @@ def set_time(__, message):
             message.reply_text(f"Max time time 3600s, You entered {time}s.")
             return
         else:
-            message.reply_text(f"channel Medias will be deleted after {time}s.")
+            message.reply_text(f"Channel Medias will be deleted after {time}s.")
             cdtime.clear()
             cdtime.append(time)
             
