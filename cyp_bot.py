@@ -52,9 +52,6 @@ async def media_files(client, message):
     video_id = message.message_id
     c = await message.copy(media_channel)
     await message.copy(bk_channel)
-    for ct in cdtime:
-        await asyncio.sleep(int(ct))
-        await cyp.delete_messages(media_channel, message_ids=c.message_id)
     for t in dtime:
         await asyncio.sleep(int(t))
     try:
@@ -62,7 +59,11 @@ async def media_files(client, message):
     except FloodWait as e:
         time.sleep(e.x)
         await cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
-        
+    for ct in cdtime:
+        ctf = ct - t
+        print(ctf)
+        await asyncio.sleep(int(ctf))
+        await cyp.delete_messages(media_channel, message_ids=c.message_id)
     return
 
 @cyp.on_message(filters.command('gst') & filters.group)
