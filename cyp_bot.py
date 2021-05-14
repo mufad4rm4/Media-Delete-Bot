@@ -9,9 +9,9 @@ import os
 import asyncio
 import heroku3
 
-# api_id = int(os.environ["API_ID"])
-# api_hash = os.environ["API_HASH"]
-# bot_token = os.environ["BOT_TOKEN"]
+api_id = int(os.environ["API_ID"])
+api_hash = os.environ["API_HASH"]
+bot_token = os.environ["BOT_TOKEN"]
 
 dtime = ['15']
 cdtime = ['1800']
@@ -30,9 +30,9 @@ start_img = [
 
 cyp = Client(
     'cyp_bot',
-    api_id=1280226, 
-    api_hash='40c6be639fd3e699783cbb43c511cef0', 
-    bot_token='1756158596:AAG3nIW1Nce_Uafvf10gejRR7bag0hw0edo'
+    api_id=api_id, 
+    api_hash=api_hash, 
+    bot_token=bot_token
 )
 print("bot starting")
 
