@@ -65,7 +65,7 @@ async def media_files(client, message):
         
     return
 
-@cyp.on_message(filters.command('st') & filters.group)
+@cyp.on_message(filters.command('gst') & filters.group)
 def set_time(__, message):
     user_id = message.from_user.id
     for member in cyp.get_chat_members(chat_id=message.chat.id, filter="administrators"):
