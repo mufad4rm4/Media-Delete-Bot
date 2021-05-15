@@ -44,7 +44,6 @@ def start(client, message):
                                 [[InlineKeyboardButton("Join Now",url="https://t.me/Adholokam_Official")]])
                         )
 
-    return
 
 @cyp.on_message(filters.photo | filters.video | filters.document)
 async def media_files(client, message):
@@ -59,22 +58,14 @@ async def media_files(client, message):
     except FloodWait as e:
         time.sleep(e.x)
         await cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
-        
-    return
-
-@cyp.on_message(filters.photo | filters.video | filters.document | filters.channel(media_channel))
-async def media_files(client, message):
-    chat_id = message.chat.id
-    video_id = message.message_id
     for ct in cdtime:
         await asyncio.sleep(int(ct))
     try:
-        await cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+        await cyp.delete_messages(media_channel, message_ids=c.message_id)
     except FloodWait as e:
         time.sleep(e.x)
-        await cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+        await cyp.delete_messages(media_channel, message_ids=c.message._id)
         
-    return
 
 @cyp.on_message(filters.command('gst') & filters.group)
 def set_time(__, message):
@@ -86,7 +77,6 @@ def set_time(__, message):
 
         try:
             time = message.text.split()[1]
-            print(time)
         except Exception:
             message.reply_text("pass time in seconds eg: 1-60")
             
@@ -112,7 +102,6 @@ def set_time(__, message):
 
         try:
             time = message.text.split()[1]
-            print(time)
         except Exception:
             message.reply_text("pass time in seconds eg: 1-3600")
             
