@@ -60,9 +60,7 @@ async def media_files(client, message):
         time.sleep(e.x)
         await cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     for ct in cdtime:
-        ctf = ct - t
-        print(ctf)
-        await asyncio.sleep(int(ctf))
+        await asyncio.sleep(int(ct))
         await cyp.delete_messages(media_channel, message_ids=c.message_id)
     return
 
@@ -76,7 +74,6 @@ def set_time(__, message):
 
         try:
             time = message.text.split()[1]
-            print(time)
         except Exception:
             message.reply_text("pass time in seconds eg: 1-60")
             
@@ -102,7 +99,6 @@ def set_time(__, message):
 
         try:
             time = message.text.split()[1]
-            print(time)
         except Exception:
             message.reply_text("pass time in seconds eg: 1-3600")
             
