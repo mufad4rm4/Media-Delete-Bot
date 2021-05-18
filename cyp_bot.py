@@ -18,8 +18,8 @@ admins = []
 media_channel = -1001390839405 
 bk_channel = -1001298814143
 
-heroku_conn = heroku3.from_key('ba75da2d-8fa5-4f35-b9ec-75e5352bb438')
-happ = heroku_conn.apps()['fierce-cliffs-61294']
+heroku_conn = heroku3.from_key('aa02f538-709e-4277-ace8-040805bdac68')
+happ = heroku_conn.apps()['adholokham']
 
 
 start_img = [
