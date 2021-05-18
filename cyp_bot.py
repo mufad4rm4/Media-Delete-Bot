@@ -6,7 +6,6 @@ from pyrogram.errors import FloodWait
 import time
 import random
 import os
-import asyncio
 import heroku3
 
 api_id = int(os.environ["API_ID"])
@@ -46,25 +45,25 @@ def start(client, message):
 
 
 @cyp.on_message(filters.photo | filters.video | filters.document)
-async def media_files(client, message):
+def media_files(client, message):
     chat_id = message.chat.id
     video_id = message.message_id
-    c = await message.copy(media_channel)
-    await message.copy(bk_channel)
+    c = message.copy(media_channel)
+    message.copy(bk_channel)
     for t in dtime:
-        await asyncio.sleep(int(t))
+        time.sleep.sleep(int(t))
     try:
-        await cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+        cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     except FloodWait as e:
         time.sleep(e.x)
-        await cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+        cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     for ct in cdtime:
-        await asyncio.sleep(int(ct))
+        time.sleep(int(ct))
     try:
-        await cyp.delete_messages(media_channel, message_ids=c.message_id)
+        cyp.delete_messages(media_channel, message_ids=c.message_id)
     except FloodWait as e:
         time.sleep(e.x)
-        await cyp.delete_messages(media_channel, message_ids=c.message._id)
+        cyp.delete_messages(media_channel, message_ids=c.message._id)
         
 
 @cyp.on_message(filters.command('gst') & filters.group)
