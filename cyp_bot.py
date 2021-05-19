@@ -8,12 +8,20 @@ import random
 import os
 import heroku3
 
+#for heroku
+
 api_id = int(os.environ["API_ID"])
 api_hash = os.environ["API_HASH"]
 bot_token = os.environ["BOT_TOKEN"]
 
+#for test 
+
+# api_id = 1280226
+# api_hash = '40c6be639fd3e699783cbb43c511cef0'
+# bot_token = '1756158596:AAG3nIW1Nce_Uafvf10gejRR7bag0hw0edo'
+
 dtime = ['15']
-cdtime = ['1800']
+cdtime = ['3600']
 admins = []
 media_channel = -1001390839405 
 bk_channel = -1001298814143
@@ -31,7 +39,8 @@ cyp = Client(
     'cyp_bot',
     api_id=api_id, 
     api_hash=api_hash, 
-    bot_token=bot_token
+    bot_token=bot_token,
+    sleep_threshold=60
 )
 print("bot starting")
 
@@ -49,21 +58,14 @@ def media_files(client, message):
     chat_id = message.chat.id
     video_id = message.message_id
     c = message.copy(media_channel)
+    time.sleep(2)
     message.copy(bk_channel)
     for t in dtime:
-        time.sleep.sleep(int(t))
-    try:
-        cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
-    except FloodWait as e:
-        time.sleep(e.x)
+        time.sleep(int(t))
         cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
     for ct in cdtime:
         time.sleep(int(ct))
-    try:
         cyp.delete_messages(media_channel, message_ids=c.message_id)
-    except FloodWait as e:
-        time.sleep(e.x)
-        cyp.delete_messages(media_channel, message_ids=c.message._id)
         
 
 @cyp.on_message(filters.command('gst') & filters.group)
