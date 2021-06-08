@@ -6,22 +6,21 @@ from pyrogram.errors import FloodWait
 import time
 import random
 import os
+from os import getenv
 import heroku3
 
 #for heroku
 
-api_id = int(os.environ["API_ID"])
-api_hash = os.environ["API_HASH"]
-bot_token = os.environ["BOT_TOKEN"]
-
+api_id = int(getenv("API_ID"))
+api_hash = getenv("API_HASH")
+bot_token = getenv("BOT_TOKEN")
+g_time = int(getenv("GROUP_DELETE_TIME"))
 #for test 
 
 # api_id = 1280226
 # api_hash = '40c6be639fd3e699783cbb43c511cef0'
 # bot_token = '1756158596:AAG3nIW1Nce_Uafvf10gejRR7bag0hw0edo'
 
-dtime = ['15']
-cdtime = ['3600']
 admins = []
 media_channel = -1001390839405 
 bk_channel = -1001298814143
@@ -57,67 +56,9 @@ def start(client, message):
 def media_files(client, message):
     chat_id = message.chat.id
     video_id = message.message_id
-    c = message.copy(media_channel)
-    time.sleep(2)
-    message.copy(bk_channel)
-    for t in dtime:
-        time.sleep(int(t))
-        cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
-    for ct in cdtime:
-        time.sleep(int(ct))
-        cyp.delete_messages(media_channel, message_ids=c.message_id)
-        
-
-@cyp.on_message(filters.command('gst') & filters.group)
-def set_time(__, message):
-    user_id = message.from_user.id
-    for member in cyp.get_chat_members(chat_id=message.chat.id, filter="administrators"):
-        admin = member.user.id
-        admins.append(admin)
-    if user_id in admins:
-
-        try:
-            time = message.text.split()[1]
-        except Exception:
-            message.reply_text("pass time in seconds eg: 1-60")
-            
-        if int(time) > 60:
-            message.reply_text(f"Max time time 60s, You entered {time}s.")
-            return
-        else:
-            message.reply_text(f"Group medias will be deleted after {time}s.")
-            dtime.clear()
-            dtime.append(time)
-            admins.clear()
-    else:
-        message.reply_text("This Command only for admins")
-    admins.clear()
-    
-@cyp.on_message(filters.command('cst') & filters.group)
-def set_time(__, message):
-    user_id = message.from_user.id
-    for member in cyp.get_chat_members(chat_id=message.chat.id, filter="administrators"):
-        admin = member.user.id
-        admins.append(admin)
-    if user_id in admins:
-
-        try:
-            time = message.text.split()[1]
-        except Exception:
-            message.reply_text("pass time in seconds eg: 1-3600")
-            
-        if int(time) > 3600:
-            message.reply_text(f"Max time time 3600s, You entered {time}s.")
-            return
-        else:
-            message.reply_text(f"channel edias will be deleted after {time}s.")
-            cdtime.clear()
-            cdtime.append(time)
-            
-    else:
-        message.reply_text("This Command only for group admins")
-    admins.clear()
-        
+    time.sleep(g_time)
+    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+               
 @cyp.on_message(filters.command('restart') & filters.group)
 def  hrestart(client, message):
     user_id = message.from_user.id
